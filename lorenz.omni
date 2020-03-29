@@ -20,30 +20,10 @@ sample:
     out1 = x
     out2 = y
     out3 = z
-
     
     neq_1 = 0.0
     if in1 != 0.0: neq_1 = 1.0 else: neq_1 = 0.0
-    mul_2 = x * y
-    mul_3 = z * in4
-    sub_4 = mul_2 - mul_3
-    mul_5 = sub_4 * in5
-    mul_6 = mul_5 * neq_1
-    add_7 = mul_6 + z
-    rsub_8 = y - x
-    mul_9 = rsub_8 * in2
-    mul_10 = mul_9 * in5
-    mul_11 = mul_10 * neq_1
-    add_12 = mul_11 + x
-    rsub_13 = in3 - z
-    mul_14 = x * rsub_13
-    rsub_15 = mul_14 - y
-    mul_16 = rsub_15 * in5
-    mul_17 = mul_16 * neq_1
-    add_18 = mul_17 + y
-    z_next_19 = add_7
-    x_next_20 = add_12
-    y_next_21 = add_18
-    z = z_next_19
-    y = y_next_21
-    x = x_next_20
+
+    z = ((((x * y) - (z * in4)) * in5) * neq_1) + z
+    x = ((((y - x) * in2) * in5) * neq_1) + x
+    y = ((((x * (in3 - z)) - y) * in5) * neq_1) + y
