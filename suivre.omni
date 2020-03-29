@@ -1,0 +1,35 @@
+include "functions.omni"
+
+ins 3:
+    "sig"
+    "slideup"
+    "slidedown"
+
+outs 1:
+    "smoothed_signal"
+
+init:
+    history_1 = 0.0
+    switch_10 = 0.0
+    min_4 = 0.0
+    min_7 = 0.0
+    gt_2 = 0.0
+sample:
+    in1 = in1*in1
+    gt_2 = float(in1 > history_1)
+    sub_3 = in1 - history_1
+
+    min_4 = max(in2, 1.0)
+
+    rdiv_5 = 1.0 / min_4
+    mul_6 = sub_3 * rdiv_5
+
+    min_7 = max(in3, 1.0)
+
+    rdiv_8 = 1.0 / min_7
+    mul_9 = sub_3 * rdiv_8
+    if gt_2 != 0.0: switch_10 = mul_6 else: switch_10 = mul_9 
+    add_11 = history_1 + switch_10
+    out1 = sqrt(add_11)
+    history_1_next_12 = add_11
+    history_1 = history_1_next_12

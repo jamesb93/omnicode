@@ -1,0 +1,33 @@
+ins 4:
+    "input_signal"
+    "delay_time"
+    "feedback"
+    "dry_wet_mix"
+ 
+outs 2:
+    "output"
+    "debug"
+ 
+init:
+    maxDelayLength  = int(4 * samplerate)
+ 
+    #dt_samps        = int(in2 * samplerate)
+    fb              = 0.6
+    mix             = 0.5
+ 
+    buffer          = Data.new(maxDelayLength)
+    bufferRecIndex  = 0
+    bufferPlayIndex = 1
+    dt_samps = int(in2 * samplerate)
+ 
+sample:
+    dt_samps        = int(in2 * samplerate)
+ 
+    buffer[bufferRecIndex] = in1
+ 
+    #bufferRecIndex++
+   
+    bufferRecIndex = (bufferRecIndex + 1)
+    bufferRecIndex = bufferRecIndex mod dt_samps
+ 
+    out1 = buffer[bufferRecIndex]

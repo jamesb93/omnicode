@@ -1,0 +1,13 @@
+ins 1
+outs 1
+ 
+init:
+    x1 = 0.0
+    y1 = 0.0
+
+sample:
+    y = in1 - x1 + y1 * 0.9997;
+    x1 = in1;
+    y1 = y;
+    
+    out1 = y

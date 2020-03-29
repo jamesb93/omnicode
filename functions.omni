@@ -1,0 +1,15 @@
+def max(val1, val2):
+    ret = 0.0
+    if val1 > val2 ret:
+        ret = val1
+    else:
+        ret = val2
+    return ret
+
+def clip(val, min, max):
+    ret = val
+    if val > max:
+        ret = max
+    if val < min:
+        ret = min
+    return ret

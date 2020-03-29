@@ -1,0 +1,19 @@
+include "functions.omni"
+
+ins 3:
+    "sig"
+    "offset"
+    "overdrive"
+
+outs 1:
+    "distorted_signal"
+
+init:
+    dummy = 0.0
+sample:
+    offset = clip(in2, 0.0, 1.0)
+    drive = clip(in3, 0.0, 1.0)
+    pregain = pow(10.0, (2.0 * drive))
+    x = clip(((in1 + offset)*pregain), -1.0, 1.0)
+    out1 = x - (x*x*x)/3.0
+     
