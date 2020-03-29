@@ -8,17 +8,11 @@ ins 5:
 outs 4
 
 init:
-    # a = 10.0
-    # b = 28.0
-    # c = 2.67
-    # dt = 0.01
     x = 0.1
     y = 0.1
     z = 0.1
-    dummy = 0.0
 
 sample:
-    # output the values
     if in1 == 0.0:
         x = 0.1
         y = 0.1
@@ -26,6 +20,8 @@ sample:
     out1 = x
     out2 = y
     out3 = z
+
+    
     neq_1 = 0.0
     if in1 != 0.0: neq_1 = 1.0 else: neq_1 = 0.0
     mul_2 = x * y
