@@ -1,6 +1,7 @@
 ins 1:
     "signal"
-outs 1
+
+outs 1:
     "filtered_signal"
  
 init:
