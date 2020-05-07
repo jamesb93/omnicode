@@ -1,0 +1,25 @@
+er = 0.01 - pow(smoother, 0.2) * 0.01
+
+    val = 0.0
+
+    for i in 1..NUM_FOURSES: #1 to 4 (included)
+        fourses[i].incy   = (fourses[i].inc * smoother) + (fourses[i].incym1 * (1.0 - smoother))
+        fourses[i].incym1 = fourses[i].inc
+
+        fourses[i].decy   = (fourses[i].dec * smoother) + (fourses[i].decym1 * (1.0 - smoother))
+        fourses[i].decym1 = fourses[i].decy
+
+        val =  fourses[i].val
+        val += fourses[i].adder
+
+        if val <= fourses[i+1].val or val <= low_limit:
+            fourses[i].adder = fourses[i].incy
+        elif val >= fourses[i-1].val or val >= high_limit:
+            fourses[i].adder = fourses[i].decy
+        
+        fourses[i].val = val
+    
+    out1 = dcblock(dcfilters[0], fourses[1].val)
+    out2 = dcblock(dcfilters[1], fourses[2].val)
+    out3 = dcblock(dcfilters[2], fourses[3].val)
+    out4 = dcblock(dcfilters[3], fourses[4].val)
