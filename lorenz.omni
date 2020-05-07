@@ -5,7 +5,10 @@ ins 5:
     "c"
     "dt" 
 
-outs 4
+outs 3:
+    "x"
+    "y"
+    "z"
 
 init:
     x = 0.1
