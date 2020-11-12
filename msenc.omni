@@ -1,0 +1,14 @@
+ins 2:
+    left
+    right
+
+outs 2:
+    "mid"
+    "side"
+
+init:
+    sixdb = 0.5011872336272722
+
+sample:
+    out1 = (left + right) * sixdb
+    out2 = (left - right) * sixdb
